@@ -1,34 +1,5 @@
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Based  on:
-" Maintainer: 
-"       Amir Salihefendic
-"       http://amix.dk - amix@amix.dk
-"
-" Version: 
-"       6.0 - 01/04/17 14:24:34 
 
-
-
-" => Custom stuff
-
-" Mappings
-map <C-n> : NERDTreeToggle<CR>
-map <C-f> : CtrlP<CR>
-map <C-r> : Ack<CR>
-
-" Buffer swap
-nnoremap <silent> <C-l> :bnext<CR>
-nnoremap <silent> <C-h> :bprevious<CR>
-
-" Startup
-setl number
-
-"Pathogen plugin manager
-execute pathogen#infect()
-
-" 2 space tabs, yay front end standards :(
-set tabstop=2 shiftwidth=2
-
+" Custom settings at bottom of file so they  dont get overritten
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => General
@@ -53,7 +24,7 @@ nmap <leader>w :w!<cr>
 
 " :W sudo saves the file 
 " (useful for handling the permission-denied error)
-command W w !sudo tee % > /dev/null
+"command W w !sudo tee % > /dev/null
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -93,13 +64,17 @@ set backspace=eol,start,indent
 set whichwrap+=<,>,h,l
 
 " Ignore case when searching
-set ignorecase
+" USE '\c' instead
+"set ignorecase
 
 " When searching try to be smart about cases 
 set smartcase
 
 " Highlight search results
 set hlsearch
+
+" Toggle search  highlight
+:noremap <F4> :set hlsearch! hlsearch?<CR>
 
 " Makes search act like search in modern browsers
 set incsearch 
@@ -120,12 +95,6 @@ set noerrorbells
 set novisualbell
 set t_vb=
 set tm=500
-
-" Properly disable sound on errors on MacVim
-if has("gui_macvim")
-    autocmd GUIEnter * set vb t_vb=
-endif
-
 
 " Add a bit extra margin to the left
 set foldcolumn=1
@@ -182,9 +151,6 @@ set expandtab
 " Be smart when using tabs ;)
 set smarttab
 
-" 1 tab == 4 spaces
-set shiftwidth=4
-set tabstop=4
 
 " Linebreak on 500 characters
 set lbr
@@ -363,3 +329,41 @@ function! <SID>BufcloseCloseIt()
      execute("bdelete! ".l:currentBufNum)
    endif
 endfunction
+
+
+"""""""""""""""""""""""""""""""
+" START BEN'S CUSTOM SETTINGS "
+"""""""""""""""""""""""""""""""
+
+" Mappings
+map <C-n> : NERDTreeToggle<CR>
+map <C-f> : CtrlP<CR>
+
+" Buffer swap
+nnoremap <silent> <C-a> :bnext<CR>
+nnoremap <silent> <C-d> :bprevious<CR>
+
+" Line numbers everywhere
+setl number
+
+"Pathogen plugin manager
+execute pathogen#infect()
+
+" 2 space tabs, for JS. How do I make this  language specific?
+set tabstop=2 shiftwidth=2
+
+" ignore common build and excluded files when searching
+set  wildignore+=*/dist/*,*/build/*,*/node_modules/*,*/coverage/*
+
+" Syntastic recommended beginners settings
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+let g:syntastic_javascript_checkers = ['eslint']
+
+
