@@ -334,6 +334,8 @@ endfunction
 """""""""""""""""""""""""""""""
 " START BEN'S CUSTOM SETTINGS "
 """""""""""""""""""""""""""""""
+" Colour scheme
+colorscheme turtles
 
 " Mappings
 map <C-n> : NERDTreeToggle<CR>
