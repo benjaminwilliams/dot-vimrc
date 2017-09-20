@@ -11,16 +11,17 @@ Download .vimrc
 1. clone into `~/dot-vimrc`
 1. make sure old .vimrc does not exist/ move it  to backup location
 1. create symlink `ln -s ~/dot-vimrc/.vimrc ~/.vimrc`
-1. create symlink for bundles `ln -s ~/dot-vimrc/ ~/.vim/
+1. create symlink for bundles `ln -s ~/dot-vimrc/ ~/.vim/`
+1. cd into `~/.vim/` and install submodules `git  submodule update --init --recursive`
 
 ## Adding or updating list of pathogen plugins
 
-1. ``` cd ~/dot-vimrc
-1. ``` git submodule add [giturl] [bundle/pluginName]
+1. `cd ~/dot-vimrc/bundle` Note: you want to be in the bundle directory
+1. `git submodule add [giturl]`
 1. commit changes to git
 
 ## Upgrading all plugins
-``` git submodule foreach git pull origin master
+`git submodule foreach git pull origin master`
 
 ## Resources
 

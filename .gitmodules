@@ -40,6 +40,6 @@
 [submodule "bundle/YouCompleteMe"]
 	path = bundle/YouCompleteMe
 	url = https://github.com/Valloric/YouCompleteMe.git
-[submodule "Turtles"]
-	path = Turtles
+[submodule "bundle/Turtles"]
+	path = bundle/Turtles
 	url = https://github.com/beigebrucewayne/Turtles.git
