@@ -112,7 +112,7 @@ if $COLORTERM == 'gnome-terminal'
 endif
 
 try
-    colorscheme desert
+    colorscheme gruvbox
 catch
 endtry
 
@@ -188,6 +188,7 @@ map <C-l> <C-W>l
 
 " Close the current buffer
 map <leader>bd :Bclose<cr>:tabclose<cr>gT
+map <leader>w :Bclose<cr>:tabclose<cr>gT
 
 " Close all the buffers
 map <leader>ba :bufdo bd<cr>
@@ -330,23 +331,29 @@ function! <SID>BufcloseCloseIt()
    endif
 endfunction
 
+let g:prettier#config#config_precedence = 'file-override'
 
 """""""""""""""""""""""""""""""
 " START BEN'S CUSTOM SETTINGS "
 """""""""""""""""""""""""""""""
 " Colour scheme
-colorscheme turtles
+" colorscheme turtles
 
 " Mappings
 map <C-n> : NERDTreeToggle<CR>
 map <C-f> : CtrlP<CR>
+map <C-i> : YcmCompleter GoTo<CR>
 
 " Buffer swap
-nnoremap <silent> <C-a> :bnext<CR>
-nnoremap <silent> <C-d> :bprevious<CR>
+nnoremap <silent> <C-d> :bnext<CR>
+nnoremap <silent> <C-a> :bprevious<CR>
 
 " Line numbers everywhere
 setl number
+
+" ctrlP
+let g:ctrlp_map = '<c-p>'
+let g:ctrlp_cmd = 'CtrlP'
 
 "Pathogen plugin manager
 execute pathogen#infect()
@@ -357,15 +364,5 @@ set tabstop=2 shiftwidth=2
 " ignore common build and excluded files when searching
 set  wildignore+=*/dist/*,*/build/*,*/node_modules/*,*/coverage/*
 
-" Syntastic recommended beginners settings
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-let g:syntastic_javascript_checkers = ['eslint']
-
-
+" NERDtree show dotfiles by default
+let NERDTreeShowHidden=1
