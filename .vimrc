@@ -364,5 +364,9 @@ set tabstop=2 shiftwidth=2
 " ignore common build and excluded files when searching
 set  wildignore+=*/dist/*,*/build/*,*/node_modules/*,*/coverage/*
 
+" colorscheme override
+autocmd vimenter * ++nested colorscheme gruvbox
+set background=light
+
 " NERDtree show dotfiles by default
 let NERDTreeShowHidden=1
