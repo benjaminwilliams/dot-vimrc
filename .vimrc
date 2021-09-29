@@ -369,7 +369,7 @@ let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
 
 "Pathogen plugin manager
-execute pathogen#infect()
+" execute pathogen#infect()
 
 " 2 space tabs, for JS. How do I make this  language specific?
 set tabstop=2 shiftwidth=2
@@ -383,3 +383,20 @@ set background=light
 
 " NERDtree show dotfiles by default
 let NERDTreeShowHidden=1
+
+" Specify a directory for plugins
+" - For Neovim: stdpath('data') . '/plugged'
+" - Avoid using standard Vim directory names like 'plugin'
+call plug#begin('~/.vim/plugged')
+
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'preservim/nerdtree'
+Plug 'morhetz/gruvbox'
+Plug 'Yggdroot/indentLine'
+Plug 'vim-airline/vim-airline'
+Plug 'https://github.com/ctrlpvim/ctrlp.vim.git'
+Plug 'Xuyuanp/nerdtree-git-plugin'
+Plug 'https://github.com/airblade/vim-gitgutter.git'
+
+" Initialize plugin system
+call plug#end()
