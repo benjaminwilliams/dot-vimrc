@@ -352,6 +352,9 @@ if (empty($TMUX))
   endif
 endif
 
+" set filetypes as typescriptreact
+autocmd BufNewFile,BufRead *.tsx,*.jsx set filetype=typescriptreact
+
 " Mappings
 map <C-n> : NERDTreeToggle<CR>
 map <C-f> : CtrlP<CR>
@@ -397,6 +400,10 @@ Plug 'vim-airline/vim-airline'
 Plug 'https://github.com/ctrlpvim/ctrlp.vim.git'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'https://github.com/airblade/vim-gitgutter.git'
+Plug 'leafgarland/typescript-vim'
+Plug 'peitalin/vim-jsx-typescript'
+" post install (yarn install | npm install) then load plugin only for editing supported files
+Plug 'prettier/vim-prettier', {'do': 'yarn install'}
 
 " Initialize plugin system
 call plug#end()
